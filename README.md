@@ -1,16 +1,14 @@
 # D-RAG: Differentiable Retrieval-Augmented Generation
 
-Implementation of **D-RAG** (Differentiable Retrieval-Augmented Generation) with the **Nemotron-3-Nano-30B** hybrid Mamba-Transformer model.
+This repository provides a practical implementation of the main D-RAG (Differentiable Retrieval-Augmented Generation) pipeline for Knowledge Graph Question Answering (KGQA), based on the methodology proposed by Gao et al. in D-RAG: Differentiable Retrieval-Augmented Generation for Knowledge Graph Question Answering.
 
-## Abstract
+The implementation focuses on the WebQSP pipeline and includes the core components of the D-RAG framework: graph-based fact retrieval, differentiable fact sampling with Binary Gumbel-Softmax and Straight-Through Estimation, neural projection of retrieved graph facts into the language-model embedding space, Phase 1 retriever pretraining, Phase 2 joint retriever-generator training, and final evaluation.
 
-This repository presents a complete implementation of **D-RAG (Differentiable Retrieval-Augmented Generation for Knowledge Graph Question Answering)**, following the methodology proposed by Gao et al. (EMNLP 2025).
+Experiments were conducted on a single NVIDIA GeForce RTX 4070 Ti Super GPU with 16GB VRAM, which is substantially smaller than the multi-GPU setup used in the original paper. For this reason, the goal of this repository is not to reproduce the full paper-level benchmark results or claim state-of-the-art performance. Instead, the goal is to provide a runnable, documented, and reproducible course-level implementation of the main D-RAG training mechanism under constrained computational resources.
 
-D-RAG introduces an end-to-end differentiable retrieval framework that jointly optimizes a graph-based retriever and a large language model through differentiable fact selection, eliminating the need for non-differentiable retrieval pipelines. The framework combines graph neural network retrieval, Binary Gumbel-Softmax sampling with Straight-Through Estimation (STE), neural fact projection, and autoregressive answer generation.
+In particular, this project demonstrates the central idea of D-RAG: replacing hard, non-differentiable retrieval decisions with differentiable fact selection, allowing the generator loss to propagate back through the retrieval module during joint training.
 
-This implementation reproduces the complete two-stage D-RAG training pipeline, including Phase 1 graph retriever training, Phase 2 joint retriever-generator optimization, and evaluation on the WebQSP benchmark. The repository also provides reproducible training scripts, evaluation utilities, checkpoint management, and detailed documentation for reproducing the experimental pipeline.
-
-The project was developed as part of the Database Systems course and is intended for research, educational purposes, and future extensions in Retrieval-Augmented Generation (RAG), Knowledge Graph Question Answering (KGQA), Graph Neural Networks (GNNs), and Large Language Models (LLMs).
+The repository is intended as an educational and research-oriented implementation for studying Retrieval-Augmented Generation, Knowledge Graph Question Answering, Graph Neural Networks, differentiable retrieval, and LLM-based answer generation.
 
 
 ## 🚀 Quick Start (New Instance)
